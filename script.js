@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeCheckboxes();
   initializeButtons();
   initializeModal();
-  loadSavedData();
+  // loadSavedData(); // Disabled so checkboxes reset on page refresh
   updateChart();
   updateProgressCounter();
 });
