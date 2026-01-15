@@ -113,6 +113,26 @@ function showModalWithChoices(title, message, choices) {
   });
 }
 
+// Show info modal with only OK button
+function showInfoModal(title, message) {
+  return new Promise((resolve) => {
+    modalResolve = resolve;
+    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("modalMessage").textContent = message;
+
+    // Hide cancel button, show only confirm button as OK
+    document.getElementById("modalCancelBtn").style.display = "none";
+    document.getElementById("modalConfirmBtn").style.display = "inline-block";
+    document.getElementById("modalConfirmBtn").textContent = "හරි";
+
+    // Hide custom choice buttons if they exist
+    const existingChoices = document.querySelectorAll(".modal-choice-btn");
+    existingChoices.forEach((btn) => btn.remove());
+
+    document.getElementById("customModal").classList.add("show");
+  });
+}
+
 // Close custom modal
 function closeModal() {
   document.getElementById("customModal").classList.remove("show");
@@ -123,6 +143,16 @@ function initializeCheckboxes() {
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", async function (event) {
+      // Check mutual exclusion between akushala and sobhana FIRST
+      const mutualExclusionValid = await checkAkushalaSobhanaMutualExclusion(
+        this
+      );
+      if (!mutualExclusionValid) {
+        event.preventDefault();
+        this.checked = false;
+        return;
+      }
+
       // Check if sabba chitha sadarana checkboxes need to be checked first
       const isValid = await checkSabbhaChithaSadarana(this);
       if (!isValid) {
@@ -131,11 +161,49 @@ function initializeCheckboxes() {
         return;
       }
 
-      // Check mutual exclusion between akushala and sobhana
-      const mutualExclusionValid = await checkAkushalaSobhanaMutualExclusion(
-        this
-      );
-      if (!mutualExclusionValid) {
+      // Check if sobhana sadharana checkboxes need to be selected together
+      const sobhanaSadaranaValid = await checkSobhanaSadharana(this);
+      if (!sobhanaSadaranaValid) {
+        event.preventDefault();
+        this.checked = false;
+        return;
+      }
+
+      // Check if apramanya checkboxes need to be selected together
+      const apramanyaValid = await checkApramanya(this);
+      if (!apramanyaValid) {
+        event.preventDefault();
+        this.checked = false;
+        return;
+      }
+
+      // Check if virathi checkboxes need to be selected together
+      const virathiValid = await checkVirathi(this);
+      if (!virathiValid) {
+        event.preventDefault();
+        this.checked = false;
+        return;
+      }
+
+      // Check if akusala sadarana checkboxes need to be selected together
+      const akusalaSadaranaGroupValid = await checkAkusalaSadarana(this);
+      if (!akusalaSadaranaGroupValid) {
+        event.preventDefault();
+        this.checked = false;
+        return;
+      }
+
+      // Check if dosa checkboxes need to be selected together
+      const dosaValid = await checkDosa(this);
+      if (!dosaValid) {
+        event.preventDefault();
+        this.checked = false;
+        return;
+      }
+
+      // Check if theena-middha checkboxes need to be selected together
+      const theenaMiddhaValid = await checkTheenaMiddha(this);
+      if (!theenaMiddhaValid) {
         event.preventDefault();
         this.checked = false;
         return;
@@ -201,8 +269,16 @@ async function checkSabbhaChithaSadarana(clickedCheckbox) {
     }
   });
 
-  // If clicking a sabba chitha sadarana checkbox, allow it
+  // If clicking a sabba chitha sadarana checkbox, select all and show message
   if (isFromSabbaChitha) {
+    // Check all sabba chitha sadarana checkboxes
+    sabbaChithaCheckboxes.forEach((cb) => {
+      cb.checked = true;
+    });
+
+    // Show info modal with only OK button
+    await showInfoModal("දැනුම්දීම", "මෙම චෛතසික සෑම සිතකම සැමවිටම පවතී.");
+
     return true;
   }
 
@@ -230,6 +306,255 @@ async function checkSabbhaChithaSadarana(clickedCheckbox) {
     } else {
       return false;
     }
+  }
+
+  return true;
+}
+
+// Check if සොභන සධාරන (sobhana sadharana) checkboxes are all selected together
+async function checkSobhanaSadharana(clickedCheckbox) {
+  // Get all checkboxes in the sobhana sadharana section (yellow section)
+  const sobhanaSadaranaSection = document.querySelector(
+    ".yellow-section .checkbox-list"
+  );
+  const sobhanaSadaranaCheckboxes = sobhanaSadaranaSection.querySelectorAll(
+    'input[type="checkbox"]'
+  );
+
+  // Check if the clicked checkbox is one of the sobhana sadharana checkboxes
+  let isFromSobhanaSadharana = false;
+  sobhanaSadaranaCheckboxes.forEach((cb) => {
+    if (cb === clickedCheckbox) {
+      isFromSobhanaSadharana = true;
+    }
+  });
+
+  // If clicking a sobhana sadharana checkbox, select all and show message
+  if (isFromSobhanaSadharana) {
+    // Check all sobhana sadharana checkboxes
+    sobhanaSadaranaCheckboxes.forEach((cb) => {
+      cb.checked = true;
+    });
+
+    // Show info modal with only OK button
+    await showInfoModal("දැනුම්දීම", "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී.");
+
+    return true;
+  }
+
+  return true;
+}
+
+// Check if අප්‍රමාන්‍ය (apramanya) checkboxes are all selected together
+async function checkApramanya(clickedCheckbox) {
+  // Get all sobhana checkboxes
+  const allSobhanaCheckboxes = document.querySelectorAll(
+    'input[type="checkbox"][data-section="sobhana"]'
+  );
+
+  // Find the apramanya checkboxes by label text (කරුණ and මුදිතා)
+  const apramanyaCheckboxes = Array.from(allSobhanaCheckboxes).filter((cb) => {
+    const label = cb.parentElement.textContent;
+    return (
+      (label.includes("කරුණ") && label.includes("karuna")) ||
+      (label.includes("මුදිතා") && label.includes("muditha"))
+    );
+  });
+
+  // Check if the clicked checkbox is one of the apramanya checkboxes
+  let isFromApramanya = false;
+  apramanyaCheckboxes.forEach((cb) => {
+    if (cb === clickedCheckbox) {
+      isFromApramanya = true;
+    }
+  });
+
+  // If clicking an apramanya checkbox, select all and show message
+  if (isFromApramanya) {
+    // Check all apramanya checkboxes
+    apramanyaCheckboxes.forEach((cb) => {
+      cb.checked = true;
+    });
+
+    // Show info modal with only OK button
+    await showInfoModal("දැනුම්දීම", "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී.");
+
+    return true;
+  }
+
+  return true;
+}
+
+// Check if විරති (virathi) checkboxes are all selected together
+async function checkVirathi(clickedCheckbox) {
+  // Get all sobhana checkboxes
+  const allSobhanaCheckboxes = document.querySelectorAll(
+    'input[type="checkbox"][data-section="sobhana"]'
+  );
+
+  // Find the virathi checkboxes by label text (සම්මා වචා, සම්මා කම්මන්තා, සම්මා ආජීවෝ)
+  const virathiCheckboxes = Array.from(allSobhanaCheckboxes).filter((cb) => {
+    const label = cb.parentElement.textContent;
+    return (
+      (label.includes("සම්මා වචා") && label.includes("samma wacha")) ||
+      (label.includes("කම්මන්තා") && label.includes("samma kamantha")) ||
+      (label.includes("සම්මා ආජීවෝ") && label.includes("samma ajeewa"))
+    );
+  });
+
+  // Check if the clicked checkbox is one of the virathi checkboxes
+  let isFromVirathi = false;
+  virathiCheckboxes.forEach((cb) => {
+    if (cb === clickedCheckbox) {
+      isFromVirathi = true;
+    }
+  });
+
+  // If clicking a virathi checkbox, select all and show message
+  if (isFromVirathi) {
+    // Check all virathi checkboxes
+    virathiCheckboxes.forEach((cb) => {
+      cb.checked = true;
+    });
+
+    // Show info modal with only OK button
+    await showInfoModal("දැනුම්දීම", "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී.");
+
+    return true;
+  }
+
+  return true;
+}
+
+// Check if අකුසල සාධාරණ (akusala sadarana) checkboxes are all selected together
+async function checkAkusalaSadarana(clickedCheckbox) {
+  // Get all akushala checkboxes
+  const allAkushalaCheckboxes = document.querySelectorAll(
+    'input[type="checkbox"][data-section="akushala"]'
+  );
+
+  // Find the akusala sadarana checkboxes by label text (මෝහ, අහිරික, අනොත්තෙප්ප, ඉද්ධචච)
+  const akusalaSadaranaCheckboxes = Array.from(allAkushalaCheckboxes).filter(
+    (cb) => {
+      const label = cb.parentElement.textContent;
+      return (
+        (label.includes("මෝහ") && label.includes("moha")) ||
+        (label.includes("අහිරික") && label.includes("ahirika")) ||
+        (label.includes("අනොත්තෙප්ප") && label.includes("anotthappa")) ||
+        (label.includes("ඉද්ධචච") && label.includes("uddhacha"))
+      );
+    }
+  );
+
+  // Check if the clicked checkbox is one of the akusala sadarana checkboxes
+  let isFromAkusalaSadarana = false;
+  akusalaSadaranaCheckboxes.forEach((cb) => {
+    if (cb === clickedCheckbox) {
+      isFromAkusalaSadarana = true;
+    }
+  });
+
+  // If clicking an akusala sadarana checkbox, select all and show message
+  if (isFromAkusalaSadarana) {
+    // Check all akusala sadarana checkboxes
+    akusalaSadaranaCheckboxes.forEach((cb) => {
+      cb.checked = true;
+    });
+
+    // Show info modal with only OK button
+    await showInfoModal(
+      "දැනුම්දීම",
+      "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී."
+    );
+
+    return true;
+  }
+
+  return true;
+}
+
+// Check if දොස චතුස්තකය (dosa) checkboxes are all selected together
+async function checkDosa(clickedCheckbox) {
+  // Get all akushala checkboxes
+  const allAkushalaCheckboxes = document.querySelectorAll(
+    'input[type="checkbox"][data-section="akushala"]'
+  );
+
+  // Find the dosa checkboxes by label text (දොස, ඉස්සා, මිච්ඡරිය, කුකුච්ච)
+  const dosaCheckboxes = Array.from(allAkushalaCheckboxes).filter((cb) => {
+    const label = cb.parentElement.textContent;
+    return (
+      (label.includes("දොස") && label.includes("dhosa")) ||
+      (label.includes("ඉස්සා") && label.includes("issa")) ||
+      (label.includes("මිච්ඡරිය") && label.includes("michariya")) ||
+      (label.includes("කුකුච්ච") && label.includes("kukucha"))
+    );
+  });
+
+  // Check if the clicked checkbox is one of the dosa checkboxes
+  let isFromDosa = false;
+  dosaCheckboxes.forEach((cb) => {
+    if (cb === clickedCheckbox) {
+      isFromDosa = true;
+    }
+  });
+
+  // If clicking a dosa checkbox, select all and show message
+  if (isFromDosa) {
+    // Check all dosa checkboxes
+    dosaCheckboxes.forEach((cb) => {
+      cb.checked = true;
+    });
+
+    // Show info modal with only OK button
+    await showInfoModal(
+      "දැනුම්දීම",
+      "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී."
+    );
+
+    return true;
+  }
+
+  return true;
+}
+
+// Check if තින-මිද්ධ (theena-middha) checkboxes are selected together
+async function checkTheenaMiddha(clickedCheckbox) {
+  // Get all akushala checkboxes
+  const allAkushalaCheckboxes = document.querySelectorAll(
+    'input[type="checkbox"][data-section="akushala"]'
+  );
+
+  // Find theena and middha checkboxes
+  let theenaCheckbox = null;
+  let middhaCheckbox = null;
+
+  allAkushalaCheckboxes.forEach((cb) => {
+    const label = cb.parentElement.textContent;
+    if (label.includes("තින") && label.includes("theena")) {
+      theenaCheckbox = cb;
+    }
+    if (label.includes("මිද්ධ") && label.includes("middha")) {
+      middhaCheckbox = cb;
+    }
+  });
+
+  // Check if the clicked checkbox is theena or middha
+  const isTheena = clickedCheckbox === theenaCheckbox;
+  const isMiddha = clickedCheckbox === middhaCheckbox;
+
+  // If clicking theena or middha, select both
+  if (isTheena || isMiddha) {
+    if (theenaCheckbox) theenaCheckbox.checked = true;
+    if (middhaCheckbox) middhaCheckbox.checked = true;
+
+    // Show info modal with only OK button
+    await showInfoModal(
+      "දැනුම්දීම",
+      "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී."
+    );
+
+    return true;
   }
 
   return true;
@@ -313,71 +638,26 @@ async function checkAkusalaSadaranaForLobhaOrDosa(clickedCheckbox) {
     );
   });
 
-  // Check if at least one අකුසල සාධාරණ checkbox is checked
-  let hasAkusalaSadaranaChecked = false;
+  // Check if ALL අකුසල සාධාරණ checkboxes are checked
+  let allAkusalaSadaranaChecked = true;
   akusalaSadaranaCheckboxes.forEach((cb) => {
-    if (cb.checked) {
-      hasAkusalaSadaranaChecked = true;
+    if (!cb.checked) {
+      allAkusalaSadaranaChecked = false;
     }
   });
 
-  // If no අකුසල සාධාරණ is checked, show choice modal
-  if (!hasAkusalaSadaranaChecked) {
-    // Prepare choices
-    const choices = [];
-
-    akusalaSadaranaCheckboxes.forEach((cb) => {
-      const cbLabel = cb.parentElement.textContent;
-      let label = "";
-      let value = "";
-
-      if (cbLabel.includes("මෝහ") && cbLabel.includes("moha")) {
-        label = "මෝහ";
-        value = "moha";
-      } else if (cbLabel.includes("අහිරික") && cbLabel.includes("ahirika")) {
-        label = "අහිරික";
-        value = "ahirika";
-      } else if (
-        cbLabel.includes("අනොත්තෙප්ප") &&
-        cbLabel.includes("anotthappa")
-      ) {
-        label = "අනොත්තෙප්ප";
-        value = "anotthappa";
-      } else if (cbLabel.includes("උද්ධචච") && cbLabel.includes("uddhacha")) {
-        label = "උද්ධචච";
-        value = "uddhacha";
-      }
-
-      if (label && value) {
-        choices.push({
-          label: label,
-          value: value,
-          checkbox: cb,
-          color: "#e91e63",
-          borderColor: "#c2185b",
-        });
-      }
-    });
-
-    choices.push({
-      label: "අවලංගු කරන්න",
-      value: false,
-      color: "#e0e0e0",
-      borderColor: "#bdbdbd",
-    });
-
-    const choice = await showModalWithChoices(
+  // If not all අකුසල සාධාරණ are checked, show confirmation modal
+  if (!allAkusalaSadaranaChecked) {
+    const confirmed = await showModal(
       "දැනුම්දීම",
-      "අකුසල සාධාරණ චෛතසික තෝරන්න\n\nකරුණාකර එකක් තෝරන්න:",
-      choices
+      "අකුසල සාධාරණ (4) ප්‍රථමයෙන් තෝරා ගත යුතුය.\n\nඔබට මේවා දැන් තෝරා ගැනීමට අවශ්‍යද?"
     );
 
-    if (choice && choice !== false) {
-      // Find and check the selected checkbox
-      const selectedChoice = choices.find((c) => c.value === choice);
-      if (selectedChoice && selectedChoice.checkbox) {
-        selectedChoice.checkbox.checked = true;
-      }
+    if (confirmed) {
+      // Check all අකුසල සාධාරණ checkboxes
+      akusalaSadaranaCheckboxes.forEach((cb) => {
+        cb.checked = true;
+      });
       return true;
     } else {
       return false;

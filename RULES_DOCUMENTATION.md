@@ -83,11 +83,24 @@ Before selecting any Chetasika, all 7 Sabba Chitha Sadarana Chetasikas must be s
 
 **ක්‍රියාත්මක වීම (Implementation):**
 
+**Part A - Auto-Selection:**
+
+- සබ්බ චිත්ත සාධාරණ කාණ්ඩයේ ඕනෑම චෛතසිකයක් තෝරන විට, සියලු 7 ම ස්වයංක්‍රීයව තෝරා ගනී
+- "හරි" බොත්තම පමණක් ඇති තහවුරු කිරීමේ pop-up පෙන්වයි
+
+**Part B - Prerequisite Check:**
+
 - පරිශීලකයා සබ්බ චිත්ත සාධාරණ 7 හැර වෙනත් චෛතසිකයක් තෝරන විට පරීක්ෂා කරයි
-- 7 ම තෝරා නොමැති නම්, තිබේ නම් pop-up පණිවිඩයක් පෙන්වයි
+- 7 ම තෝරා නොමැති නම්, ඔව්/නැත තහවුරු කිරීමේ pop-up පණිවිඩයක් පෙන්වයි
 - පරිශීලකයා "ඔව්" ක්ලික් කළහොත්, සියලු 7 ම ස්වයංක්‍රීයව තෝරා ගනී
 
-**පණිවිඩය (Message):**
+**පණිවිඩ (Messages):**
+
+Auto-Selection:
+
+> "මෙම චෛතසික සෑම සිතකම සැමවිටම පවතී."
+
+Prerequisite Check:
 
 > "සබ්බ චිත්ත සාධාරණ (sabba chitha sadarana) - 7 ප්‍රථමයෙන් තෝරා ගත යුතුය.
 >
@@ -146,30 +159,22 @@ When selecting any Akushala (14) or Sobhana (25) Chetasika, Veeriya (veeriya) mu
 **Rule 4: Akusala Sadarana Prerequisite**
 
 **සිංහල:**
-ලෝභ ත්‍රිහේතුක (3) හෝ දොස චතුස්තකය (4) තෝරන විට අකුසලා සාධාරණ (4) අතරින් අවම වශයෙන් එකක් තෝරා ගත යුතුය.
+ලෝභ ත්‍රිහේතුක (3) හෝ දොස චතුස්තකය (4) තෝරන විට අකුසලා සාධාරණ (4) සියල්ල තෝරා ගත යුතුය.
 
 **English:**
-When selecting Lobha Trihetuka (3) or Dosa Chatusthaka (4), at least one from Akusala Sadarana (4) must be selected.
+When selecting Lobha Trihetuka (3) or Dosa Chatusthaka (4), all 4 from Akusala Sadarana must be selected.
 
 **ක්‍රියාත්මක වීම (Implementation):**
 
 - ලෝභ හෝ දොස කාණ්ඩයේ චෛතසිකයක් තෝරන විට පරීක්ෂා කරයි
-- අකුසල සාධාරණ තෝරා නොමැති නම් තෝරාගැනීමේ pop-up පෙන්වයි
-- පරිශීලකයාට මෝහ, අහිරික, අනොත්තෙප්ප, හෝ උද්ධචච තෝරා ගැනීමට විකල්පය ලබා දෙයි
+- අකුසල සාධාරණ 4 ම තෝරා නොමැති නම් ඔව්/නැත තහවුරු කිරීමේ pop-up පෙන්වයි
+- පරිශීලකයා "ඔව්" ක්ලික් කළහොත්, සියලු 4 ම ස්වයංක්‍රීයව තෝරා ගනී
 
 **පණිවිඩය (Message):**
 
-> "අකුසල සාධාරණ චෛතසික තෝරන්න
+> "අකුසල සාධාරණ (4) ප්‍රථමයෙන් තෝරා ගත යුතුය.
 >
-> කරුණාකර එකක් තෝරන්න:"
-
-**විකල්ප (Options):**
-
-- මෝහ
-- අහිරික
-- අනොත්තෙප්ප
-- උද්ධචච
-- අවලංගු කරන්න
+> ඔබට මේවා දැන් තෝරා ගැනීමට අවශ්‍යද?"
 
 ---
 
@@ -227,6 +232,111 @@ When selecting Lobha, either Dhitti or Mana must be selected.
 
 ---
 
+### නීතිය 7: සොභන සධාරන ස්වයංක්‍රීය තෝරා ගැනීම
+
+**Rule 7: Sobhana Sadharana Auto-Selection**
+
+**සිංහල:**
+සොභන සධාරන (19) කාණ්ඩයේ ඕනෑම චෛතසිකයක් තෝරන විට, සියලු 19 ම ස්වයංක්‍රීයව තෝරා ගනී.
+
+**English:**
+When selecting any Chetasika from Sobhana Sadharana (19), all 19 are automatically selected.
+
+**ක්‍රියාත්මක වීම (Implementation):**
+
+- සොභන සධාරන කාණ්ඩයේ ඕනෑම චෛතසිකයක් ක්ලික් කළ විට සියලු 19 ම තෝරා ගනී
+- "හරි" බොත්තම පමණක් ඇති තහවුරු කිරීමේ pop-up පෙන්වයි
+
+**පණිවිඩය (Message):**
+
+> "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී."
+
+---
+
+### නීතිය 8: අප්‍රමාන්‍ය ස්වයංක්‍රීය තෝරා ගැනීම
+
+**Rule 8: Apramanya Auto-Selection**
+
+**සිංහල:**
+අප්‍රමාන්‍ය (2) කාණ්ඩයේ ඕනෑම චෛතසිකයක් තෝරන විට, දෙකම ස්වයංක්‍රීයව තෝරා ගනී.
+
+**English:**
+When selecting any Chetasika from Apramanya (2), both are automatically selected.
+
+**ක්‍රියාත්මක වීම (Implementation):**
+
+- කරුණ හෝ මුදිතා තෝරන විට දෙකම ස්වයංක්‍රීයව තෝරා ගනී
+- "හරි" බොත්තම පමණක් ඇති තහවුරු කිරීමේ pop-up පෙන්වයි
+
+**පණිවිඩය (Message):**
+
+> "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී."
+
+---
+
+### නීතිය 9: විරති ස්වයංක්‍රීය තෝරා ගැනීම
+
+**Rule 9: Virathi Auto-Selection**
+
+**සිංහල:**
+විරති (3) කාණ්ඩයේ ඕනෑම චෛතසිකයක් තෝරන විට, සියලු 3 ම ස්වයංක්‍රීයව තෝරා ගනී.
+
+**English:**
+When selecting any Chetasika from Virathi (3), all 3 are automatically selected.
+
+**ක්‍රියාත්මක වීම (Implementation):**
+
+- සම්මා වචා, සම්මා කම්මන්තා, හෝ සම්මා ආජීවෝ තෝරන විට තුනම ස්වයංක්‍රීයව තෝරා ගනී
+- "හරි" බොත්තම පමණක් ඇති තහවුරු කිරීමේ pop-up පෙන්වයි
+
+**පණිවිඩය (Message):**
+
+> "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී."
+
+---
+
+### නීතිය 10: අකුසල සාධාරණ ස්වයංක්‍රීය තෝරා ගැනීම
+
+**Rule 10: Akusala Sadarana Auto-Selection**
+
+**සිංහල:**
+අකුසල සාධාරණ (4) කාණ්ඩයේ ඕනෑම චෛතසිකයක් තෝරන විට, සියලු 4 ම ස්වයංක්‍රීයව තෝරා ගනී.
+
+**English:**
+When selecting any Chetasika from Akusala Sadarana (4), all 4 are automatically selected.
+
+**ක්‍රියාත්මක වීම (Implementation):**
+
+- මෝහ, අහිරික, අනොත්තෙප්ප, හෝ උද්ධචච තෝරන විට හතරම ස්වයංක්‍රීයව තෝරා ගනී
+- "හරි" බොත්තම පමණක් ඇති තහවුරු කිරීමේ pop-up පෙන්වයි
+
+**පණිවිඩය (Message):**
+
+> "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී."
+
+---
+
+### නීතිය 11: දොස චතුස්තකය ස්වයංක්‍රීය තෝරා ගැනීම
+
+**Rule 11: Dosa Chatusthaka Auto-Selection**
+
+**සිංහල:**
+දොස චතුස්තකය (4) කාණ්ඩයේ ඕනෑම චෛතසිකයක් තෝරන විට, සියලු 4 ම ස්වයංක්‍රීයව තෝරා ගනී.
+
+**English:**
+When selecting any Chetasika from Dosa Chatusthaka (4), all 4 are automatically selected.
+
+**ක්‍රියාත්මක වීම (Implementation):**
+
+- දොස, ඉස්සා, මිච්ඡරිය, හෝ කුකුච්ච තෝරන විට හතරම ස්වයංක්‍රීයව තෝරා ගනී
+- "හරි" බොත්තම පමණක් ඇති තහවුරු කිරීමේ pop-up පෙන්වයි
+
+**පණිවිඩය (Message):**
+
+> "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී."
+
+---
+
 ## නීති ක්‍රියාත්මක වීමේ පිළිවෙල
 
 **Rule Execution Order**
@@ -235,12 +345,19 @@ When selecting Lobha, either Dhitti or Mana must be selected.
 
 When selecting a Chetasika, rules are executed in the following order:
 
-1. **සබ්බ චිත්ත සාධාරණ පරීක්ෂාව** (Sabba Chitha Sadarana Check)
-2. **අකුසල-සොභන අන්යෝන්‍ය බැහැරවීම** (Akushala-Sobhana Mutual Exclusion)
-3. **වීරිය අනිවාර්යතාව** (Veeriya Requirement)
-4. **අකුසල සාධාරණ පූර්ව අවශ්‍යතාව** (Akusala Sadarana Prerequisite)
-5. **ප්‍රීතිය-ජන්දය සම්බන්ධය** (Preethi-Chandha Relationship)
-6. **ලෝභය සමඟ දිට්ඨි/මාන** (Lobha with Dhitti/Mana)
+1. **අකුසල-සොභන අන්යෝන්‍ය බැහැරවීම** (Akushala-Sobhana Mutual Exclusion) - **FIRST PRIORITY**
+2. **සබ්බ චිත්ත සාධාරණ පරීක්ෂාව** (Sabba Chitha Sadarana Check)
+3. **සොභන සධාරන ස්වයංක්‍රීය තෝරා ගැනීම** (Sobhana Sadharana Auto-Selection)
+4. **අප්‍රමාන්‍ය ස්වයංක්‍රීය තෝරා ගැනීම** (Apramanya Auto-Selection)
+5. **විරති ස්වයංක්‍රීය තෝරා ගැනීම** (Virathi Auto-Selection)
+6. **අකුසල සාධාරණ ස්වයංක්‍රීය තෝරා ගැනීම** (Akusala Sadarana Auto-Selection)
+7. **දොස චතුස්තකය ස්වයංක්‍රීය තෝරා ගැනීම** (Dosa Chatusthaka Auto-Selection)
+8. **වීරිය අනිවාර්යතාව** (Veeriya Requirement)
+9. **අකුසල සාධාරණ පූර්ව අවශ්‍යතාව** (Akusala Sadarana Prerequisite)
+10. **ප්‍රීතිය-ජන්දය සම්බන්ධය** (Preethi-Chandha Relationship)
+11. **ලෝභය සමඟ දිට්ඨි/මාන** (Lobha with Dhitti/Mana)
+
+**Important Note:** Mutual exclusion check happens FIRST to prevent any auto-selections from occurring when there's a conflict between Akushala and Sobhana categories.
 
 ---
 
@@ -259,6 +376,12 @@ When selecting a Chetasika, rules are executed in the following order:
 
 - බහු-තෝරා ගැනීම් සඳහා (Multi-choice options)
 - තෝරාගත් අගය ප්‍රතිදානය කරයි (Returns selected value)
+
+**3. showInfoModal(title, message)**
+
+- තොරතුරු පණිවිඩ සඳහා (Information messages)
+- "හරි" බොත්තම පමණක් පෙන්වයි (Shows only OK button)
+- Auto-selection rules භාවිතා කරයි (Used by auto-selection rules)
 
 ### Refresh බොත්තම් (Refresh Buttons)
 
@@ -337,6 +460,14 @@ None currently, but can be added in the future:
 ## අනුවාද ඉතිහාසය
 
 **Version History**
+
+### Version 2.0.0 (January 2026)
+
+- 6 නව ස්වයංක්‍රීය තෝරා ගැනීමේ නීති එකතු කරන ලදී
+- showInfoModal පද්ධතිය එකතු කරන ලදී (හරි බොත්තම පමණක්)
+- නීති ක්‍රියාත්මක පිළිවෙල යාවත්කාලීන කරන ලදී (mutual exclusion ප්‍රථම)
+- නීතිය 4 යාවත්කාලීන කරන ලදී (අවම වශයෙන් එකක් → සියල්ල)
+- දෝෂ නිවැරදි කිරීම්: මිච්ඡරිය spelling fix
 
 ### Version 1.0.0 (January 2026)
 
