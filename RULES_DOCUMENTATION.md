@@ -265,7 +265,7 @@ When selecting any Chetasika from Apramanya (2), both are automatically selected
 
 **ක්‍රියාත්මක වීම (Implementation):**
 
-- කරුණ හෝ මුදිතා තෝරන විට දෙකම ස්වයංක්‍රීයව තෝරා ගනී
+- කරුණා හෝ මුදිතා තෝරන විට දෙකම ස්වයංක්‍රීයව තෝරා ගනී
 - "හරි" බොත්තම පමණක් ඇති තහවුරු කිරීමේ pop-up පෙන්වයි
 
 **පණිවිඩය (Message):**

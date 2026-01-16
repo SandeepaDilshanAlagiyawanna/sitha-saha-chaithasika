@@ -269,15 +269,23 @@ async function checkSabbhaChithaSadarana(clickedCheckbox) {
     }
   });
 
-  // If clicking a sabba chitha sadarana checkbox, select all and show message
+  // If clicking a sabba chitha sadarana checkbox
   if (isFromSabbaChitha) {
-    // Check all sabba chitha sadarana checkboxes
-    sabbaChithaCheckboxes.forEach((cb) => {
-      cb.checked = true;
-    });
+    // If the checkbox is being checked (true), select all and show message
+    if (clickedCheckbox.checked) {
+      // Check all sabba chitha sadarana checkboxes
+      sabbaChithaCheckboxes.forEach((cb) => {
+        cb.checked = true;
+      });
 
-    // Show info modal with only OK button
-    await showInfoModal("දැනුම්දීම", "මෙම චෛතසික සෑම සිතකම සැමවිටම පවතී.");
+      // Show info modal with only OK button
+      await showInfoModal("දැනුම්දීම", "මෙම චෛතසික සෑම සිතකම සැමවිටම පවතී.");
+    } else {
+      // If the checkbox is being unchecked (false), uncheck all sabba chitha sadarana checkboxes
+      sabbaChithaCheckboxes.forEach((cb) => {
+        cb.checked = false;
+      });
+    }
 
     return true;
   }
@@ -329,15 +337,26 @@ async function checkSobhanaSadharana(clickedCheckbox) {
     }
   });
 
-  // If clicking a sobhana sadharana checkbox, select all and show message
+  // If clicking a sobhana sadharana checkbox
   if (isFromSobhanaSadharana) {
-    // Check all sobhana sadharana checkboxes
-    sobhanaSadaranaCheckboxes.forEach((cb) => {
-      cb.checked = true;
-    });
+    // If the checkbox is being checked (true), select all and show message
+    if (clickedCheckbox.checked) {
+      // Check all sobhana sadharana checkboxes
+      sobhanaSadaranaCheckboxes.forEach((cb) => {
+        cb.checked = true;
+      });
 
-    // Show info modal with only OK button
-    await showInfoModal("දැනුම්දීම", "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී.");
+      // Show info modal with only OK button
+      await showInfoModal(
+        "දැනුම්දීම",
+        "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී."
+      );
+    } else {
+      // If the checkbox is being unchecked (false), uncheck all sobhana sadharana checkboxes
+      sobhanaSadaranaCheckboxes.forEach((cb) => {
+        cb.checked = false;
+      });
+    }
 
     return true;
   }
@@ -352,11 +371,11 @@ async function checkApramanya(clickedCheckbox) {
     'input[type="checkbox"][data-section="sobhana"]'
   );
 
-  // Find the apramanya checkboxes by label text (කරුණ and මුදිතා)
+  // Find the apramanya checkboxes by label text (කරුණා and මුදිතා)
   const apramanyaCheckboxes = Array.from(allSobhanaCheckboxes).filter((cb) => {
     const label = cb.parentElement.textContent;
     return (
-      (label.includes("කරුණ") && label.includes("karuna")) ||
+      (label.includes("කරුණා") && label.includes("karuna")) ||
       (label.includes("මුදිතා") && label.includes("muditha"))
     );
   });
@@ -369,15 +388,26 @@ async function checkApramanya(clickedCheckbox) {
     }
   });
 
-  // If clicking an apramanya checkbox, select all and show message
+  // If clicking an apramanya checkbox
   if (isFromApramanya) {
-    // Check all apramanya checkboxes
-    apramanyaCheckboxes.forEach((cb) => {
-      cb.checked = true;
-    });
+    // If the checkbox is being checked (true), select all and show message
+    if (clickedCheckbox.checked) {
+      // Check all apramanya checkboxes
+      apramanyaCheckboxes.forEach((cb) => {
+        cb.checked = true;
+      });
 
-    // Show info modal with only OK button
-    await showInfoModal("දැනුම්දීම", "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී.");
+      // Show info modal with only OK button
+      await showInfoModal(
+        "දැනුම්දීම",
+        "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී."
+      );
+    } else {
+      // If the checkbox is being unchecked (false), uncheck all apramanya checkboxes
+      apramanyaCheckboxes.forEach((cb) => {
+        cb.checked = false;
+      });
+    }
 
     return true;
   }
@@ -410,15 +440,26 @@ async function checkVirathi(clickedCheckbox) {
     }
   });
 
-  // If clicking a virathi checkbox, select all and show message
+  // If clicking a virathi checkbox
   if (isFromVirathi) {
-    // Check all virathi checkboxes
-    virathiCheckboxes.forEach((cb) => {
-      cb.checked = true;
-    });
+    // If the checkbox is being checked (true), select all and show message
+    if (clickedCheckbox.checked) {
+      // Check all virathi checkboxes
+      virathiCheckboxes.forEach((cb) => {
+        cb.checked = true;
+      });
 
-    // Show info modal with only OK button
-    await showInfoModal("දැනුම්දීම", "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී.");
+      // Show info modal with only OK button
+      await showInfoModal(
+        "දැනුම්දීම",
+        "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී."
+      );
+    } else {
+      // If the checkbox is being unchecked (false), uncheck all virathi checkboxes
+      virathiCheckboxes.forEach((cb) => {
+        cb.checked = false;
+      });
+    }
 
     return true;
   }
@@ -433,7 +474,7 @@ async function checkAkusalaSadarana(clickedCheckbox) {
     'input[type="checkbox"][data-section="akushala"]'
   );
 
-  // Find the akusala sadarana checkboxes by label text (මෝහ, අහිරික, අනොත්තෙප්ප, ඉද්ධචච)
+  // Find the akusala sadarana checkboxes by label text (මෝහ, අහිරික, අනොත්තෙප්ප, උද්ධචච)
   const akusalaSadaranaCheckboxes = Array.from(allAkushalaCheckboxes).filter(
     (cb) => {
       const label = cb.parentElement.textContent;
@@ -441,7 +482,7 @@ async function checkAkusalaSadarana(clickedCheckbox) {
         (label.includes("මෝහ") && label.includes("moha")) ||
         (label.includes("අහිරික") && label.includes("ahirika")) ||
         (label.includes("අනොත්තෙප්ප") && label.includes("anotthappa")) ||
-        (label.includes("ඉද්ධචච") && label.includes("uddhacha"))
+        (label.includes("උද්ධචච") && label.includes("uddhacha"))
       );
     }
   );
@@ -499,18 +540,26 @@ async function checkDosa(clickedCheckbox) {
     }
   });
 
-  // If clicking a dosa checkbox, select all and show message
+  // If clicking a dosa checkbox
   if (isFromDosa) {
-    // Check all dosa checkboxes
-    dosaCheckboxes.forEach((cb) => {
-      cb.checked = true;
-    });
+    // If the checkbox is being checked (true), select all and show message
+    if (clickedCheckbox.checked) {
+      // Check all dosa checkboxes
+      dosaCheckboxes.forEach((cb) => {
+        cb.checked = true;
+      });
 
-    // Show info modal with only OK button
-    await showInfoModal(
-      "දැනුම්දීම",
-      "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී."
-    );
+      // Show info modal with only OK button
+      await showInfoModal(
+        "දැනුම්දීම",
+        "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී."
+      );
+    } else {
+      // If the checkbox is being unchecked (false), uncheck all dosa checkboxes
+      dosaCheckboxes.forEach((cb) => {
+        cb.checked = false;
+      });
+    }
 
     return true;
   }
@@ -831,17 +880,18 @@ async function checkDhittiOrManaForLobha(clickedCheckbox) {
 
 // Initialize button event listeners
 function initializeButtons() {
-  // Reset button
-  document.getElementById("resetBtn").addEventListener("click", function () {
+  // Reset button - Now calls the backend to find matching සිත්
+  document
+    .getElementById("resetBtn")
+    .addEventListener("click", async function () {
+      await findMatchingCitta();
+    });
+
+  // Save button - Now resets all data
+  document.getElementById("saveBtn").addEventListener("click", function () {
     if (confirm("ඔබට සියලුම දත්ත නැවත සැකසීමට අවශ්‍යද?")) {
       resetAllData();
     }
-  });
-
-  // Save button
-  document.getElementById("saveBtn").addEventListener("click", function () {
-    saveData();
-    alert("දත්ත සාර්ථකව සුරකින ලදි!");
   });
 
   // Reload button
@@ -1145,4 +1195,162 @@ function refreshFrame(frameName) {
   updateChart();
   updateProgressCounter();
   saveData();
+}
+// Backend API Configuration
+const BACKEND_URL = "http://localhost:8000";
+
+// Map checkbox labels to CSV column names (updated mapping)
+const CHECKBOX_TO_CSV_MAP = {
+  "ඵස්ස (phassa)": "ඵස්ස",
+  "වේදනා (vedhana)": "වේදනා",
+  "සංඥා (sangya)": "සංඥා",
+  "චෙතනා (chethana)": "චේතනා",
+  "ඒකග්ඝතා (ekagatha)": "ඒකග්ඝතා",
+  "ජීවිතෙන්ද්‍රිය (jeewitheedriya)": "ජිවිතින්ද්‍රිය",
+  "මනසිකාරය (manaskaraya)": "මනසිකාරය",
+  "විතක්ක (withakka)": "විතක්ක",
+  "විචාර (vichara)": "විචාර",
+  "අධිමොක්ඛා (adhimokkha)": "අධිමොක්ඛා",
+  "වීරිය (veeriya)": "වීරිය",
+  "පීතී (preethi)": "පීතී",
+  "ඡන්ද (chandha)": "ඡන්ද",
+  "මෝහ (moha)": "මෝහ",
+  "අහිරික (ahirika)": "අහිරික",
+  "අනොත්තෙප්ප (anotthappa)": "අනොත්තප්ප",
+  "උද්ධචච (uddhacha)": "උද්ධච්ච",
+  "ලෝභ (lobha)": "ලෝභ",
+  "දිට්ඨි (dhitti)": "දිට්ඨි",
+  "මාන (mana)": "මාන",
+  "දොස (dhosa)": "දෝස",
+  "ඉස්සා (issa)": "ඉස්සා",
+  "මිච්ඡරිය (michariya)": "මච්ජරිය",
+  "කුකුච්ච (kukucha)": "කුක්කුච්ච",
+  "තින (theena)": "ථීන",
+  "මිද්ධ (middha)": "මිද්ධ",
+  "විචිකිච්ඡා (vichikicha)": "විචිකිච්ජා",
+  "සද්ධා (saddha)": "සද්ධා",
+  "සති (sathi)": "සති",
+  "හිරි (hiri)": "හිරි",
+  "ඔත්තප (othappa)": "ඔත්තප්ප",
+  "අලොභ (alobha)": "අලොභ",
+  "අදොස (adhosa)": "අදොස",
+  "තත්‍රමජ්ජත්තතා (thathramajanthatha)": "තත්‍රමජ්ජත්තතා",
+  "කාය පස්සද්ධි (kaya passadhi)": "කාය පස්සද්ධි",
+  "චිත්ත පස්සද්ධි (chittha passadhi)": "චිත්ත පස්සද්ධි",
+  "කාය ලහුතා (kaya lahutha)": "කාය ලහුතා",
+  "චිත්ත ලහුතා (chittha lahutha)": "චිත්ත ලහුතා",
+  "කාය මුදුතා (kaya mutdutha)": "කාය මුදුතා",
+  "චිත්ත මුදුතා (chittha mutdutha)": "චිත්ත මුදුතා",
+  "කාය කම්මගතා (kaya kammagatha)": "කාය කම්මගතා",
+  "චිත්ත කම්මගතා (chittha kammagatha)": "චිත්ත කම්මගතා",
+  "කාය පාගුඤ්ඤතා (kaya pragungyatha)": "කාය පාගුඤ්ඤතා",
+  "චිත්ත පාගුඤ්ඤතා (chittha pragungyatha)": "චිත්ත පාගුඤ්ඤතා",
+  "කායුජුකතා (kayujukatha)": "කායුජුකතා",
+  "චිත්තයුජුක්තා (chittayujuktha)": "චිත්තයුජුක්තා",
+  "සම්මා වචා (samma wacha)": "සම්මා වචා",
+  "සම්මා කම්මන්තා (samma kamantha)": "සම්මා කම්මන්ත",
+  "සම්මා ආජීවෝ (samma ajeewa)": "සම්මා ආජීවෝ",
+  "කරුණා (karuna)": "කරුණා",
+  "මුදිතා (muditha)": "මුදිතා",
+  "පඤ්ඤා (pragnya)": "පඤ්ඤා ",
+};
+
+// Collect current checkbox selections
+function collectCheckboxSelections() {
+  const selections = {};
+
+  // Initialize all columns to 0
+  Object.values(CHECKBOX_TO_CSV_MAP).forEach((csvCol) => {
+    selections[csvCol] = 0;
+  });
+
+  // Get all checkboxes
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+  console.log("🔍 DEBUG: Collecting checkbox selections...");
+  let checkedCount = 0;
+  let mappedCount = 0;
+
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      checkedCount++;
+      // Get the label element
+      const labelElement = checkbox.parentElement;
+      // Get text after the checkbox (using childNodes and filtering)
+      let labelText = "";
+      labelElement.childNodes.forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          labelText += node.textContent;
+        }
+      });
+      // Normalize whitespace: trim and replace multiple spaces/newlines with single space
+      labelText = labelText.trim().replace(/\s+/g, " ");
+
+      console.log(`  ✓ Checked: "${labelText}"`);
+
+      // Map to CSV column name
+      if (CHECKBOX_TO_CSV_MAP[labelText]) {
+        selections[CHECKBOX_TO_CSV_MAP[labelText]] = 1;
+        mappedCount++;
+        console.log(`    ✅ Mapped to: "${CHECKBOX_TO_CSV_MAP[labelText]}"`);
+      } else {
+        console.log(`    ❌ NO MAPPING FOUND for: "${labelText}"`);
+      }
+    }
+  });
+
+  console.log(`\n📊 Summary: ${checkedCount} checked, ${mappedCount} mapped`);
+  console.log("📤 Sending selections:", selections);
+  return selections;
+}
+
+// Find matching සිත් from backend
+async function findMatchingCitta() {
+  try {
+    // Show loading message
+    const notesArea = document.getElementById("notesArea");
+    notesArea.value = "පරීක්ෂා කරමින්...";
+
+    // Collect current selections
+    const selections = collectCheckboxSelections();
+
+    // Count selected checkboxes
+    const selectedCount = Object.values(selections).filter(
+      (v) => v === 1
+    ).length;
+
+    if (selectedCount === 0) {
+      notesArea.value = "කරුණාකර චෛතසික තෝරන්න";
+      return;
+    }
+
+    // Call backend API
+    const response = await fetch(`${BACKEND_URL}/api/match-citta`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ selections }),
+    });
+
+    const data = await response.json();
+
+    if (data.success && data.matches.length > 0) {
+      // Display matching සිත්
+      let resultText = `තෝරාගත් චෛතසික ${selectedCount}ක් සඳහා ගැලපෙන සිත්:\n\n`;
+
+      data.matches.forEach((match, index) => {
+        resultText += `${index + 1}. ${match.join(" - ")}\n`;
+      });
+
+      resultText += `\nමුළු සිත් සංඛ්‍යාව: ${data.count}`;
+      notesArea.value = resultText;
+    } else {
+      notesArea.value = data.message || "මේ සංයෝජනයට ගැලපෙන සිත් නොමැත";
+    }
+  } catch (error) {
+    console.error("Backend connection error:", error);
+    const notesArea = document.getElementById("notesArea");
+    notesArea.value = `දෝෂයක්: Backend සේවාව ක්‍රියාත්මක නොවේ.\n\nකරුණාකර terminal එකෙන් backend එක ආරම්භ කරන්න:\npython backend.py`;
+  }
 }
