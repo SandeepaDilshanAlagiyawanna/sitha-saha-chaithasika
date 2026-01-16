@@ -9,6 +9,8 @@ from pathlib import Path
 
 app = FastAPI(title="සිත් සහ චෙතසික API")
 
+BASE_DIR = Path(__file__).parent
+
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
@@ -209,25 +211,25 @@ async def get_columns():
 @app.get("/")
 async def serve_index():
     """Serve the main HTML file"""
-    return FileResponse("index.html")
+    return FileResponse(BASE_DIR / "index.html")
 
 
 @app.get("/script.js")
 async def serve_script():
     """Serve the JavaScript file"""
-    return FileResponse("script.js")
+    return FileResponse(BASE_DIR / "script.js")
 
 
 @app.get("/styles.css")
 async def serve_styles():
     """Serve the CSS file"""
-    return FileResponse("styles.css")
+    return FileResponse(BASE_DIR / "styles.css")
 
 
 @app.get("/truthtable.csv")
 async def serve_csv():
     """Serve the CSV file"""
-    return FileResponse("truthtable.csv")
+    return FileResponse(BASE_DIR / "truthtable.csv")
 
 
 if __name__ == "__main__":
