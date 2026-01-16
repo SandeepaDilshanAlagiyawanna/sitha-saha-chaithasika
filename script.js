@@ -1197,7 +1197,7 @@ function refreshFrame(frameName) {
   saveData();
 }
 // Backend API Configuration
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = window.location.origin;
 
 // Map checkbox labels to CSV column names (updated mapping)
 const CHECKBOX_TO_CSV_MAP = {
