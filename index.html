@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="si">
   <head>
     <meta charset="UTF-8" />
@@ -96,7 +96,7 @@
 
             <!-- Box 1: අකුසලා අනන -->
             <div class="section pink-section">
-              <h3>අකුසල සාධාරණ  (akusalasadarana) - 4</h3>
+              <h3>අකුසල සාධාරණ (akusalasadarana) - 4</h3>
               <div class="checkbox-list">
                 <label
                   ><input type="checkbox" data-section="akushala" /> මෝහ
@@ -356,12 +356,12 @@
       <!-- Bottom Section -->
       <div class="bottom-section">
         <div class="button-group">
-          <button class="btn-primary" id="resetBtn">චිත්තයන් ලබා ගැනීමට</button>
+          <button class="btn-primary" id="resetBtn">සිත් ලබා ගැනීමට</button>
           <button class="btn-secondary" id="saveBtn">නැවත ආරම්භය</button>
         </div>
 
         <div class="progress-counter">
-          <span>චිත්තයන් ගණන:</span>
+          <span>චෛතසික ගණන:</span>
           <span id="progressCount">0</span>
         </div>
 
@@ -391,6 +391,19 @@
           <button class="modal-btn modal-btn-confirm" id="modalConfirmBtn">
             ඔව්
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fullscreen සිත් Modal -->
+    <div id="sithModal" class="sith-modal-overlay">
+      <div class="sith-modal-content">
+        <div class="sith-modal-header">
+          <h2>සිත්</h2>
+          <button class="sith-modal-close" id="sithModalClose">×</button>
+        </div>
+        <div class="sith-modal-body">
+          <textarea id="sithModalTextarea" readonly></textarea>
         </div>
       </div>
     </div>

@@ -144,9 +144,8 @@ function initializeCheckboxes() {
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", async function (event) {
       // Check mutual exclusion between akushala and sobhana FIRST
-      const mutualExclusionValid = await checkAkushalaSobhanaMutualExclusion(
-        this
-      );
+      const mutualExclusionValid =
+        await checkAkushalaSobhanaMutualExclusion(this);
       if (!mutualExclusionValid) {
         event.preventDefault();
         this.checked = false;
@@ -218,9 +217,8 @@ function initializeCheckboxes() {
       }
 
       // Check if akusala sadarana is selected before lobha or dosa sections
-      const akusalaSadaranaValid = await checkAkusalaSadaranaForLobhaOrDosa(
-        this
-      );
+      const akusalaSadaranaValid =
+        await checkAkusalaSadaranaForLobhaOrDosa(this);
       if (!akusalaSadaranaValid) {
         event.preventDefault();
         this.checked = false;
@@ -255,10 +253,10 @@ function initializeCheckboxes() {
 async function checkSabbhaChithaSadarana(clickedCheckbox) {
   // Get all checkboxes in the sabba chitha sadarana section
   const sabbaChithaSection = document.querySelector(
-    ".green-section .checkbox-list"
+    ".green-section .checkbox-list",
   );
   const sabbaChithaCheckboxes = sabbaChithaSection.querySelectorAll(
-    'input[type="checkbox"]'
+    'input[type="checkbox"]',
   );
 
   // Check if the clicked checkbox is one of the sabba chitha sadarana checkboxes
@@ -302,7 +300,7 @@ async function checkSabbhaChithaSadarana(clickedCheckbox) {
   if (!allChecked) {
     const confirmed = await showModal(
       "දැනුම්දීම",
-      "සබ්බ චිත්ත සාධාරණ (sabba chitha sadarana) - 7 ප්‍රථමයෙන් තෝරා ගත යුතුය.\n\nඔබට මේවා දැන් තෝරා ගැනීමට අවශ්‍යද?"
+      "සබ්බ චිත්ත සාධාරණ (sabba chitha sadarana) - 7 ප්‍රථමයෙන් තෝරා ගත යුතුය.\n\nඔබට මේවා දැන් තෝරා ගැනීමට අවශ්‍යද?",
     );
 
     if (confirmed) {
@@ -323,10 +321,10 @@ async function checkSabbhaChithaSadarana(clickedCheckbox) {
 async function checkSobhanaSadharana(clickedCheckbox) {
   // Get all checkboxes in the sobhana sadharana section (yellow section)
   const sobhanaSadaranaSection = document.querySelector(
-    ".yellow-section .checkbox-list"
+    ".yellow-section .checkbox-list",
   );
   const sobhanaSadaranaCheckboxes = sobhanaSadaranaSection.querySelectorAll(
-    'input[type="checkbox"]'
+    'input[type="checkbox"]',
   );
 
   // Check if the clicked checkbox is one of the sobhana sadharana checkboxes
@@ -349,7 +347,7 @@ async function checkSobhanaSadharana(clickedCheckbox) {
       // Show info modal with only OK button
       await showInfoModal(
         "දැනුම්දීම",
-        "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී."
+        "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී.",
       );
     } else {
       // If the checkbox is being unchecked (false), uncheck all sobhana sadharana checkboxes
@@ -368,7 +366,7 @@ async function checkSobhanaSadharana(clickedCheckbox) {
 async function checkApramanya(clickedCheckbox) {
   // Get all sobhana checkboxes
   const allSobhanaCheckboxes = document.querySelectorAll(
-    'input[type="checkbox"][data-section="sobhana"]'
+    'input[type="checkbox"][data-section="sobhana"]',
   );
 
   // Find the apramanya checkboxes by label text (කරුණා and මුදිතා)
@@ -400,7 +398,7 @@ async function checkApramanya(clickedCheckbox) {
       // Show info modal with only OK button
       await showInfoModal(
         "දැනුම්දීම",
-        "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී."
+        "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී.",
       );
     } else {
       // If the checkbox is being unchecked (false), uncheck all apramanya checkboxes
@@ -419,7 +417,7 @@ async function checkApramanya(clickedCheckbox) {
 async function checkVirathi(clickedCheckbox) {
   // Get all sobhana checkboxes
   const allSobhanaCheckboxes = document.querySelectorAll(
-    'input[type="checkbox"][data-section="sobhana"]'
+    'input[type="checkbox"][data-section="sobhana"]',
   );
 
   // Find the virathi checkboxes by label text (සම්මා වචා, සම්මා කම්මන්තා, සම්මා ආජීවෝ)
@@ -452,7 +450,7 @@ async function checkVirathi(clickedCheckbox) {
       // Show info modal with only OK button
       await showInfoModal(
         "දැනුම්දීම",
-        "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී."
+        "මෙම චෛතසික සෑම කුසල සිතකම සැමවිටම පවතී.",
       );
     } else {
       // If the checkbox is being unchecked (false), uncheck all virathi checkboxes
@@ -471,7 +469,7 @@ async function checkVirathi(clickedCheckbox) {
 async function checkAkusalaSadarana(clickedCheckbox) {
   // Get all akushala checkboxes
   const allAkushalaCheckboxes = document.querySelectorAll(
-    'input[type="checkbox"][data-section="akushala"]'
+    'input[type="checkbox"][data-section="akushala"]',
   );
 
   // Find the akusala sadarana checkboxes by label text (මෝහ, අහිරික, අනොත්තෙප්ප, උද්ධචච)
@@ -484,7 +482,7 @@ async function checkAkusalaSadarana(clickedCheckbox) {
         (label.includes("අනොත්තෙප්ප") && label.includes("anotthappa")) ||
         (label.includes("උද්ධචච") && label.includes("uddhacha"))
       );
-    }
+    },
   );
 
   // Check if the clicked checkbox is one of the akusala sadarana checkboxes
@@ -505,7 +503,7 @@ async function checkAkusalaSadarana(clickedCheckbox) {
     // Show info modal with only OK button
     await showInfoModal(
       "දැනුම්දීම",
-      "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී."
+      "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී.",
     );
 
     return true;
@@ -518,7 +516,7 @@ async function checkAkusalaSadarana(clickedCheckbox) {
 async function checkDosa(clickedCheckbox) {
   // Get all akushala checkboxes
   const allAkushalaCheckboxes = document.querySelectorAll(
-    'input[type="checkbox"][data-section="akushala"]'
+    'input[type="checkbox"][data-section="akushala"]',
   );
 
   // Find the dosa checkboxes by label text (දොස, ඉස්සා, මිච්ඡරිය, කුකුච්ච)
@@ -552,7 +550,7 @@ async function checkDosa(clickedCheckbox) {
       // Show info modal with only OK button
       await showInfoModal(
         "දැනුම්දීම",
-        "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී."
+        "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී.",
       );
     } else {
       // If the checkbox is being unchecked (false), uncheck all dosa checkboxes
@@ -571,7 +569,7 @@ async function checkDosa(clickedCheckbox) {
 async function checkTheenaMiddha(clickedCheckbox) {
   // Get all akushala checkboxes
   const allAkushalaCheckboxes = document.querySelectorAll(
-    'input[type="checkbox"][data-section="akushala"]'
+    'input[type="checkbox"][data-section="akushala"]',
   );
 
   // Find theena and middha checkboxes
@@ -600,7 +598,7 @@ async function checkTheenaMiddha(clickedCheckbox) {
     // Show info modal with only OK button
     await showInfoModal(
       "දැනුම්දීම",
-      "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී."
+      "මෙම චෛතසික සෑම අකුසල සිතකම සැමවිටම පවතී.",
     );
 
     return true;
@@ -623,7 +621,7 @@ async function checkAkushalaSobhanaMutualExclusion(clickedCheckbox) {
 
   // Check if any checkbox in the opposite section is checked
   const oppositeCheckboxes = document.querySelectorAll(
-    `input[type="checkbox"][data-section="${oppositeSection}"]`
+    `input[type="checkbox"][data-section="${oppositeSection}"]`,
   );
 
   let hasOppositeChecked = false;
@@ -675,8 +673,8 @@ async function checkAkusalaSadaranaForLobhaOrDosa(clickedCheckbox) {
   // Find all අකුසල සාධාරණ checkboxes (මෝහ, අහිරික, අනොත්තෙප්ප, උද්ධචච)
   const akusalaSadaranaCheckboxes = Array.from(
     document.querySelectorAll(
-      '.pink-section .checkbox-list input[type="checkbox"]'
-    )
+      '.pink-section .checkbox-list input[type="checkbox"]',
+    ),
   ).filter((cb) => {
     const cbLabel = cb.parentElement.textContent;
     return (
@@ -699,7 +697,7 @@ async function checkAkusalaSadaranaForLobhaOrDosa(clickedCheckbox) {
   if (!allAkusalaSadaranaChecked) {
     const confirmed = await showModal(
       "දැනුම්දීම",
-      "අකුසල සාධාරණ (4) ප්‍රථමයෙන් තෝරා ගත යුතුය.\n\nඔබට මේවා දැන් තෝරා ගැනීමට අවශ්‍යද?"
+      "අකුසල සාධාරණ (4) ප්‍රථමයෙන් තෝරා ගත යුතුය.\n\nඔබට මේවා දැන් තෝරා ගැනීමට අවශ්‍යද?",
     );
 
     if (confirmed) {
@@ -728,8 +726,8 @@ async function checkVeeriyaForKusalaAkushala(clickedCheckbox) {
   // Find the වීරිය (veeriya) checkbox
   const veeriyaCheckbox = Array.from(
     document.querySelectorAll(
-      '.blue-section .checkbox-list input[type="checkbox"]'
-    )
+      '.blue-section .checkbox-list input[type="checkbox"]',
+    ),
   ).find((cb) => {
     const label = cb.parentElement.textContent;
     return label.includes("වීරිය") || label.includes("veeriya");
@@ -748,7 +746,7 @@ async function checkVeeriyaForKusalaAkushala(clickedCheckbox) {
   // If වීරිය is not checked, show confirmation
   const confirmed = await showModal(
     "දැනුම්දීම",
-    "සෑම කුසල හෝ අකුසල සිතක් සමඟ වීරිය (veeriya) තිබිය යුතුය.\n\nඔබට වීරිය දැන් තෝරා ගැනීමට අවශ්‍යද?"
+    "සෑම කුසල හෝ අකුසල සිතක් සමඟ වීරිය (veeriya) තිබිය යුතුය.\n\nඔබට වීරිය දැන් තෝරා ගැනීමට අවශ්‍යද?",
   );
 
   if (confirmed) {
@@ -759,45 +757,45 @@ async function checkVeeriyaForKusalaAkushala(clickedCheckbox) {
   }
 }
 
-// Check if ඡන්ද (chandha) needs to be checked when ප්‍රීතිය (preethi) is selected
+// Check if ප්‍රීතිය (preethi) needs to be checked when ඡන්ද (chandha) is selected
 async function checkChandhaForPreethi(clickedCheckbox) {
-  // Check if the clicked checkbox is preethi
+  // Check if the clicked checkbox is chandha
   const label = clickedCheckbox.parentElement.textContent;
-  const isPreethi = label.includes("පීතී") || label.includes("preethi");
+  const isChandha = label.includes("ඡන්ද") || label.includes("chandha");
 
-  // If not clicking preethi, allow the action
-  if (!isPreethi) {
+  // If not clicking chandha, allow the action
+  if (!isChandha) {
     return true;
   }
 
-  // Find the ඡන්ද (chandha) checkbox
-  const chandhaCheckbox = Array.from(
+  // Find the ප්‍රීතිය (preethi) checkbox
+  const preethiCheckbox = Array.from(
     document.querySelectorAll(
-      '.blue-section .checkbox-list input[type="checkbox"]'
-    )
+      '.blue-section .checkbox-list input[type="checkbox"]',
+    ),
   ).find((cb) => {
     const cbLabel = cb.parentElement.textContent;
-    return cbLabel.includes("ඡන්ද") || cbLabel.includes("chandha");
+    return cbLabel.includes("පීතී") || cbLabel.includes("preethi");
   });
 
-  // If chandha is not found, allow the action
-  if (!chandhaCheckbox) {
+  // If preethi is not found, allow the action
+  if (!preethiCheckbox) {
     return true;
   }
 
-  // If chandha is already checked, allow the action
-  if (chandhaCheckbox.checked) {
+  // If preethi is already checked, allow the action
+  if (preethiCheckbox.checked) {
     return true;
   }
 
-  // If chandha is not checked, show confirmation
+  // If preethi is not checked, show confirmation
   const confirmed = await showModal(
     "දැනුම්දීම",
-    "ප්‍රීතිය සමඟ ජන්දය යෙදිය යුතුය.\n\nඔබට ජන්දය දැන් තෝරා ගැනීමට අවශ්‍යද?"
+    "ඡන්දය සමඟ ප්‍රීතිය යෙදිය යුතුය.\n\nඔබට ප්‍රීතිය දැන් තෝරා ගැනීමට අවශ්‍යද?",
   );
 
   if (confirmed) {
-    chandhaCheckbox.checked = true;
+    preethiCheckbox.checked = true;
     return true;
   } else {
     return false;
@@ -817,7 +815,7 @@ async function checkDhittiOrManaForLobha(clickedCheckbox) {
 
   // Find දිට්ඨිය (dhitti) and මානය (mana) checkboxes
   const akushalaCheckboxes = document.querySelectorAll(
-    '.pink-section .checkbox-list input[type="checkbox"]'
+    '.pink-section .checkbox-list input[type="checkbox"]',
   );
 
   let dhittiCheckbox = null;
@@ -864,7 +862,7 @@ async function checkDhittiOrManaForLobha(clickedCheckbox) {
         color: "#e0e0e0",
         borderColor: "#bdbdbd",
       },
-    ]
+    ],
   );
 
   if (choice === "dhitti" && dhittiCheckbox) {
@@ -894,9 +892,9 @@ function initializeButtons() {
     }
   });
 
-  // Reload button
+  // Reload button - Now opens fullscreen සිත් modal
   document.getElementById("reloadBtn").addEventListener("click", function () {
-    location.reload();
+    openSithModal();
   });
 
   // Save notes on change
@@ -942,15 +940,12 @@ function updateProgress() {
   });
 
   // Update labels
-  document.getElementById(
-    "label1"
-  ).textContent = `${progressData.anghasamana.checked}/${progressData.anghasamana.total}`;
-  document.getElementById(
-    "label2"
-  ).textContent = `${progressData.akushala.checked}/${progressData.akushala.total}`;
-  document.getElementById(
-    "label3"
-  ).textContent = `${progressData.sobhana.checked}/${progressData.sobhana.total}`;
+  document.getElementById("label1").textContent =
+    `${progressData.anghasamana.checked}/${progressData.anghasamana.total}`;
+  document.getElementById("label2").textContent =
+    `${progressData.akushala.checked}/${progressData.akushala.total}`;
+  document.getElementById("label3").textContent =
+    `${progressData.sobhana.checked}/${progressData.sobhana.total}`;
 }
 
 // Update progress counter
@@ -983,7 +978,7 @@ function updateChart() {
   const maxValue = Math.max(
     progressData.anghasamana.total,
     progressData.akushala.total,
-    progressData.sobhana.total
+    progressData.sobhana.total,
   );
   const yAxisMax = Math.ceil(maxValue / 5) * 5; // Round up to nearest 5
 
@@ -1086,7 +1081,7 @@ function updateChart() {
     ctx.fillText(
       `${bar.checked}/${bar.total}`,
       x + barWidth / 2,
-      padding.top + chartHeight + 20
+      padding.top + chartHeight + 20,
     );
   });
 }
@@ -1173,13 +1168,13 @@ window.addEventListener("resize", function () {
 // Refresh a specific frame (uncheck all checkboxes in that frame)
 function refreshFrame(frameName) {
   const checkboxes = document.querySelectorAll(
-    `input[type="checkbox"][data-section="${frameName}"]`
+    `input[type="checkbox"][data-section="${frameName}"]`,
   );
 
   // For sobhana, also include related sections
   if (frameName === "sobhana") {
     const sobhanaCheckboxes = document.querySelectorAll(
-      'input[type="checkbox"][data-section="sobhana"], input[type="checkbox"][data-section="virathi"], input[type="checkbox"][data-section="apramanya"], input[type="checkbox"][data-section="amoha"]'
+      'input[type="checkbox"][data-section="sobhana"], input[type="checkbox"][data-section="virathi"], input[type="checkbox"][data-section="apramanya"], input[type="checkbox"][data-section="amoha"]',
     );
     sobhanaCheckboxes.forEach((checkbox) => {
       checkbox.checked = false;
@@ -1316,7 +1311,7 @@ async function findMatchingCitta() {
 
     // Count selected checkboxes
     const selectedCount = Object.values(selections).filter(
-      (v) => v === 1
+      (v) => v === 1,
     ).length;
 
     if (selectedCount === 0) {
@@ -1352,5 +1347,47 @@ async function findMatchingCitta() {
     console.error("Backend connection error:", error);
     const notesArea = document.getElementById("notesArea");
     notesArea.value = `දෝෂයක්: Backend සේවාව ක්‍රියාත්මක නොවේ.\n\nකරුණාකර terminal එකෙන් backend එක ආරම්භ කරන්න:\npython backend.py`;
+  }
+}
+
+// Open fullscreen සිත් modal
+function openSithModal() {
+  const notesArea = document.getElementById("notesArea");
+  const sithModal = document.getElementById("sithModal");
+  const sithModalTextarea = document.getElementById("sithModalTextarea");
+
+  // Copy content from notes area to modal textarea
+  sithModalTextarea.value = notesArea.value;
+
+  // Show modal
+  sithModal.classList.add("show");
+
+  // Close button handler
+  document
+    .getElementById("sithModalClose")
+    .addEventListener("click", closeSithModal);
+
+  // Close on clicking outside
+  sithModal.addEventListener("click", function (e) {
+    if (e.target === sithModal) {
+      closeSithModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener("keydown", handleSithModalEscape);
+}
+
+// Close සිත් modal
+function closeSithModal() {
+  const sithModal = document.getElementById("sithModal");
+  sithModal.classList.remove("show");
+  document.removeEventListener("keydown", handleSithModalEscape);
+}
+
+// Handle Escape key for සිත් modal
+function handleSithModalEscape(e) {
+  if (e.key === "Escape") {
+    closeSithModal();
   }
 }
