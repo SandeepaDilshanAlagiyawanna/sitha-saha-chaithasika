@@ -147,7 +147,7 @@ async def match_citta(request: SelectionRequest):
 
         # Debug: Show the binary pattern
         print("📊 Binary Pattern (User Values):")
-        print(f"   {user_values}")
+        print(f"   {','.join(map(str, user_values))}")
         print(f"   Total selected: {sum(user_values)}")
         print("-" * 80)
 
