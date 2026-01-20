@@ -88,11 +88,9 @@
             </button>
           </div>
 
-          <!-- Action Buttons -->
+          <!-- Action Button -->
           <div class="button-group-relocated">
-            <button class="btn-primary" id="resetBtn">සිත් ලබා ගැනීමට</button>
-            <button class="btn-secondary" id="saveBtn">නැවත ආරම්භය</button>
-            <button class="btn-reload" id="reloadBtn">විශාල කර බලන්න</button>
+            <button class="btn-primary" id="resetBtn">අදාළ සිත් පෙන්වන්න</button>
           </div>
         </div>
 
@@ -362,7 +360,30 @@
 
       <!-- Notes Section -->
       <div class="notes-section">
-        <h3>සිත්</h3>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+          "
+        >
+          <button
+            class="btn-secondary"
+            id="saveBtn"
+            style="padding: 2px 5px; font-size: 16px"
+          >
+            ↻
+          </button>
+          <h3 style="margin: 0">සිත්</h3>
+          <button
+            class="btn-reload"
+            id="reloadBtn"
+            style="padding: 2px 5px; font-size: 16px"
+          >
+            ⤢
+          </button>
+        </div>
         <textarea id="notesArea" placeholder="සිත්" rows="4"></textarea>
       </div>
     </div>
