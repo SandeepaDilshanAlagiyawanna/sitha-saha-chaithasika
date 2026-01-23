@@ -1033,19 +1033,19 @@ function updateChart() {
       label: "අඤ්ඤසමාන",
       checked: progressData.anghasamana.checked,
       total: progressData.anghasamana.total,
-      color: "#4caf50",
+      color: "#c8e6c9",
     },
     {
       label: "අකුසල",
       checked: progressData.akushala.checked,
       total: progressData.akushala.total,
-      color: "#e91e63",
+      color: "#f8bbd0",
     },
     {
       label: "සොභන",
       checked: progressData.sobhana.checked,
       total: progressData.sobhana.total,
-      color: "#fdd835",
+      color: "#fff9c4",
     },
   ];
 
